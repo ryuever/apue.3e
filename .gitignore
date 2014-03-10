@@ -1,0 +1,13 @@
+# temp file generated due to using Emacs
+\#*
+.#*
+*~
+
+# object file
+*.o
+libunp.a
+
+# output file,such a.out
+*.out
+
+TAGS
