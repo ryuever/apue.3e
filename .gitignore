@@ -5,7 +5,7 @@
 
 # object file
 *.o
-libunp.a
+libapue.a
 
 # output file,such a.out
 *.out
