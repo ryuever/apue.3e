@@ -14,6 +14,8 @@ thr_fn1(void *arg)
 	pthread_cleanup_push(cleanup, "thread 1 first handler");
 	pthread_cleanup_push(cleanup, "thread 1 second handler");
 	printf("thread 1 push complete\n");
+	/* pthread_cleanup_pop(1); */
+	/* pthread_cleanup_pop(1); */
 	if (arg)
 		return((void *)1);
 	pthread_cleanup_pop(0);
