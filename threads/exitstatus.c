@@ -28,13 +28,22 @@ main(void)
 	err = pthread_create(&tid2, NULL, thr_fn2, NULL);
 	if (err != 0)
 		err_exit(err, "can't create thread 2");
-	err = pthread_join(tid1, &tret);
-	if (err != 0)
-		err_exit(err, "can't join with thread 1");
-	printf("thread 1 exit code %ld\n", (long)tret);
-	err = pthread_join(tid2, &tret);
-	if (err != 0)
-		err_exit(err, "can't join with thread 2");
-	printf("thread 2 exit code %ld\n", (long)tret);
+    printf("in main\n");
+
+    /* comment below logic is used to verify the function of pthread_join : */
+
+	/* err = pthread_join(tid1, &tret); */
+	/* if (err != 0) */
+	/* 	err_exit(err, "can't join with thread 1"); */
+    /* printf("in main\n"); */
+	/* printf("thread 1 exit code %ld\n", (long)tret); */
+	/* err = pthread_join(tid2, &tret); */
+	/* if (err != 0) */
+	/* 	err_exit(err, "can't join with thread 2"); */
+	/* printf("thread 2 exit code %ld\n", (long)tret); */
+
+    /* add a sleep function to leave enough time for new thread to run */
+    sleep(3);
+
 	exit(0);
 }
