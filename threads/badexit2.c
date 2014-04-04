@@ -5,9 +5,7 @@ struct foo {
 	int a, b, c, d;
 };
 
-void
-printfoo(const char *s, const struct foo *fp)
-{
+void printfoo(const char *s, const struct foo *fp){
 	printf("%s", s);
 	printf("  structure at 0x%lx\n", (unsigned long)fp);
 	printf("  foo.a = %d\n", fp->a);
@@ -16,25 +14,24 @@ printfoo(const char *s, const struct foo *fp)
 	printf("  foo.d = %d\n", fp->d);
 }
 
-void *
-thr_fn1(void *arg)
-{
+void * thr_fn1(void *arg){
 	struct foo	foo = {1, 2, 3, 4};
 
 	printfoo("thread 1:\n", &foo);
+
+    /* The value pointed to by retval should not be located on the calling thread's  */
+    /* stack, since the contents of that stack  are  undefined  after the thread  */
+    /* terminates. */
+
 	pthread_exit((void *)&foo);
 }
 
-void *
-thr_fn2(void *arg)
-{
+void * thr_fn2(void *arg){
 	printf("thread 2: ID is %lu\n", (unsigned long)pthread_self());
 	pthread_exit((void *)0);
 }
 
-int
-main(void)
-{
+int main(void){
 	int			err;
 	pthread_t	tid1, tid2;
 	struct foo	*fp;
