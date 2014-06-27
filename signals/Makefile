@@ -16,13 +16,14 @@ MOREPROGS = systest2 tsleep2
 
 all:	$(PROGS) $(MOREPROGS) abort.o sleep1.o sleep2.o system.o $(CLD)
 
-$(PROGS):	$(LIBAPUE)
+.SECONDEXPANSION:
+$(PROGS):	$(LIBAPUE) $$@.c
 		$(CC) $(CFLAGS) $@.c -o $@ $(LDFLAGS) $(LDLIBS)
 
-tsleep2:	tsleep2.o sleep2.o
+tsleep2:	tsleep2.o sleep2.o $$@.c
 		$(CC) $(CFLAGS) -o tsleep2 tsleep2.o sleep2.o $(LDFLAGS) $(LDLIBS)
 
-systest2:	systest2.o system.o
+systest2:	systest2.o system.o $$@.c
 		$(CC) $(CFLAGS) -o systest2 systest2.o system.o $(LDFLAGS) $(LDLIBS)
 
 clean:
