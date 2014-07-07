@@ -56,6 +56,7 @@ main(int argc, char *argv[])
 		errno = 0;
 		if ((ret = nice(adj)) == -1 && errno != 0)
 			err_sys("child set scheduling priority");
+        printf("func nice return value is %d\n", ret);
 		printf("now child nice value is %d\n", ret+nzero);
 	} else {		/* parent */
 		s = "parent";
