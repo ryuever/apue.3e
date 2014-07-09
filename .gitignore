@@ -1,7 +1,8 @@
-# temp file generated due to using Emacs
+# temp file generated due to using Emacs or system function invorking
 \#*
 .#*
 *~
+*.DSYM
 
 # object file
 *.o
@@ -9,5 +10,6 @@ libapue.a
 
 # output file,such a.out
 *.out
+*.lc
 
 TAGS
