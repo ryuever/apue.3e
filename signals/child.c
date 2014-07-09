@@ -8,7 +8,7 @@ main()
 {
 	pid_t	pid;
 
-	if (signal(SIGCLD, sig_cld) == SIG_ERR)
+	if (signal(SIGCHLD, sig_cld) == SIG_ERR)
 		perror("signal error");
 	if ((pid = fork()) < 0) {
 		perror("fork error");
@@ -27,9 +27,9 @@ sig_cld(int signo)	/* interrupts pause() */
 	pid_t	pid;
 	int		status;
 
-	printf("SIGCLD received\n");
+	printf("SIGCHLD received\n");
 
-	if (signal(SIGCLD, sig_cld) == SIG_ERR)	/* reestablish handler */
+	if (signal(SIGCHLD, sig_cld) == SIG_ERR)	/* reestablish handler */
 		perror("signal error");
 
 	if ((pid = wait(&status)) < 0)		/* fetch child status */
