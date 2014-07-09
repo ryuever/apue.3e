@@ -40,6 +40,8 @@ static void
 sig_quit(int signo)
 {
 	printf("caught SIGQUIT\n");
+    sleep(2);
 	if (signal(SIGQUIT, SIG_DFL) == SIG_ERR)
 		err_sys("can't reset SIGQUIT");
+    printf("signal handler finished\n");
 }
